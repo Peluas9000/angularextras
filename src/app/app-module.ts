@@ -1,21 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { SubirFichero } from './components/subir-fichero/subir-fichero';
+import { FormsModule } from '@angular/forms';
+import { SubirFicheroComponents } from './components/subir-fichero-components/subir-fichero-components';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 @NgModule({
-  declarations: [
-    App,
-    SubirFichero
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-  ],
-  bootstrap: [App]
+  declarations: [App,  SubirFicheroComponents],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}
