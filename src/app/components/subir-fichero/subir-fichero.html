@@ -1,0 +1,34 @@
+<div class="container mt-5 text-center">
+    <div class="card mx-auto" style="max-width: 500px; border-color: #007bff;">
+        
+        <div class="card-header bg-primary text-white text-start">
+            <strong>Subir Imagen</strong>
+        </div>
+        
+        <div class="card-body">
+            <!-- Usamos Referencia ViewChild #cajaFichero -->
+            <div class="border border-dashed p-5 mb-3" style="border-style: dashed !important; border-width: 2px !important; border-color: #ccc !important;">
+                
+                <p><strong>Arrastra una imagen aquí</strong></p>
+                <p class="text-muted small">o haz clic para seleccionar</p>
+
+                <!-- Input tipo file con el #idangular para capturarlo desde TS -->
+                <input type="file" #cajaFichero class="form-control mb-2" accept="image/png, image/jpeg, image/gif, image/webp" />
+                
+                <p class="text-muted small mt-2">Formatos aceptados: JPG, PNG, GIF, WebP</p>
+            </div>
+
+            <!-- Botón que ejecuta la acción de subida -->
+            <button class="btn btn-info w-100 text-white" (click)="subirImagen($event)">
+                 Subir fichero
+            </button>
+
+            <!-- Mensaje de feedback -->
+            @if (mensaje) {
+                <div class="alert alert-success mt-3">
+                    {{ mensaje }}
+                </div>
+            }
+        </div>
+    </div>
+</div>
