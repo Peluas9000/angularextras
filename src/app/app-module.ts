@@ -1,5 +1,5 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FormsModule } from '@angular/forms';
@@ -8,11 +8,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InformesPdfComponent } from './components/informes-pdf-component/informes-pdf-component';
 import { MenuComponent } from './components/menu-component/menu-component';
 import { ServiceFicheros } from './services/service.ficheros';
+import { errorInterceptor } from './interceptors/error-interceptor';
+import { provideToastService } from 'ngx-yet-another-toast-library';
+import { ErrorComponent } from './components/error-component/error-component';
 
 @NgModule({
-  declarations: [App, SubirFicheroComponents, InformesPdfComponent, MenuComponent],
+  declarations: [App, SubirFicheroComponents, InformesPdfComponent, MenuComponent, ErrorComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [provideBrowserGlobalErrorListeners(),provideHttpClient(),ServiceFicheros],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideToastService(),
+    ServiceFicheros,
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
