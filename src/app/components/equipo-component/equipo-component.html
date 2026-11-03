@@ -1,0 +1,13 @@
+<h1>Equipos</h1>
+<div class="d-flex justify-content-center">
+    @for (team of arrayequipos; track team) {
+        <div class="card m-2" style="width: 18rem;">
+            <img src="{{team.imagen}}" class="card-img-top" alt="..."/>
+            <div class="card-body">
+                <h5 class="card-title">{{team.nombre}}</h5>
+                <p class="card-text">{{team.descripcion}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    }
+</div>
