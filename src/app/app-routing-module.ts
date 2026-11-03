@@ -4,6 +4,8 @@ import { SubirFicheroComponents } from './components/subir-fichero-components/su
 import { InformesPdfComponent } from './components/informes-pdf-component/informes-pdf-component';
 import { ErrorComponent } from './components/error-component/error-component';
 import { EquipoComponent } from './components/equipo-component/equipo-component';
+import { LoginComponent } from './components/login-component/login-component';
+import { SubordinadosComponent } from './components/subordinados-component/subordinados-component';
 
 const routes: Routes = [
   {path:"",component:SubirFicheroComponents},
@@ -11,7 +13,10 @@ const routes: Routes = [
 
   {path:"error",component:ErrorComponent},
 
-  {path:"equipos",component:EquipoComponent}
+  {path:"equipos",component:EquipoComponent},
+
+  {path:"login",component:LoginComponent},
+  {path:"subordinados", component:SubordinadosComponent},
 ];
 
 @NgModule({

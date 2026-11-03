@@ -1,0 +1,26 @@
+<div>
+    <h1>Mis Subordinados</h1>
+    @if (mensaje) {
+        <p class="text-danger">{{ mensaje }}</p>
+    }
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Usamos la nueva directiva @for -->
+            @for (sub of subordinados; track sub) {
+                <tr>
+                    <td>{{ sub.apellido }}</td>
+                    <td>{{ sub.oficio }}</td>
+                    <td>{{ sub.salario }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
