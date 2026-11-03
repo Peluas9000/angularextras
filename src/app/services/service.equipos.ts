@@ -1,8 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpContext } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Equipo } from "../models/equipo";
 import { environment } from "../../environments/environment";
 import { firstValueFrom } from "rxjs";
+import { SKIP_TOKEN } from "../utils/token.context";
 
 
 @Injectable()
@@ -16,7 +17,7 @@ export class ServiceEquipos {
         let request="api/Equipos";
         let url=environment.urlApiEquipos+request;
         return firstValueFrom(
-            this._http.get<Equipo []>(url)
+            this._http.get<Equipo []>(url,{context:new HttpContext().set(SKIP_TOKEN,true)})
         )
     }
 

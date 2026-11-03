@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom, map, Observable } from 'rxjs';
 import { LoginComponent } from '../components/login-component/login-component';
 import { Login } from '../models/login';
+import { SKIP_TOKEN } from '../utils/token.context';
 
 export interface Empleado {
     idEmpleado: number;
@@ -24,7 +25,7 @@ export class ServiceEmpleados {
 
         let header =new HttpHeaders().set("content-Type", "application/json");
         return firstValueFrom(
-            this._http.post(this.urlApi+request,json,{headers:header}));
+            this._http.post(this.urlApi+request,json,{headers:header,context:new HttpContext().set(SKIP_TOKEN,true) }));
     }
 
     async getEmpleadosAsync(): Promise<Empleado> {
